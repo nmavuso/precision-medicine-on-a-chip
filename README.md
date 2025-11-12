@@ -20,7 +20,7 @@ This project implements a complete real-time sepsis diagnosis pipeline on FPGA h
 The pipeline consists of 11 stages spanning two FPGA devices:
 
 1. **POD5 BRAM Reader** (Virtex-7) - Signal normalization
-2. **Neural Network Basecaller** (Virtex-7) - Deep learning inference
+2. **Neural Network Basecaller** (Virtex-7) - CNN and LSTM (RNN with 384 hidden units)
 3. **CRF Decoder** (MicroBlaze) - Beam search decoding
 4. **FASTQ Formatter** (Zynq) - Sequence formatting
 5. **QC Trimmer** (Zynq) - Quality-based read filtering
