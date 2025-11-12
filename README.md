@@ -5,7 +5,7 @@
 
 ## Project Overview
 
-This project implements a complete real-time sepsis diagnosis pipeline on FPGA hardware, achieving end-to-end latency of less than 200ms from nanopore sequencer to clinical result. The system performs DNA basecalling, sequence alignment, gene expression quantification, pathogen identification, and ML-based sepsis classification entirely at the point of care.
+This project implements a complete real-time sepsis diagnosis pipeline on FPGA hardware, achieving end-to-end latency of less than 200ms from nanopore sequencer to clinical result. The system performs mRNA basecalling, sequence alignment, gene expression quantification, pathogen identification, and ML-based sepsis classification entirely at the point of care. 
 
 ### Target Performance
 - **End-to-End Latency:** < 200ms (MinION Sequencer → Diagnostic Result)
