@@ -356,10 +356,4 @@ Clinical report formatting in software on Zynq Processing System.
 - Hardware-software co-design
 - ARM processing for flexible report generation
 
-### Data Flow
-```
-MinION Sequencer → POD5 Reader → NN Basecaller → Decoder
-                                                     ↓
-Clinical Report ← Classifier ← Biomarkers ← Quantification ← Alignment
-```
 
