@@ -7,6 +7,29 @@ What we are effectively doing is ping-ponging weights with a DDR3 (hot swapping 
   (**Stage 1:  POD5 BRAM Reader with Z-score normalization *)
   module Stage1_pod5_reader = struct
     open Hardcaml
+    open Signal
+    (** Configuration parameters *)
+    module Config = struct
+      type t =  {
+          chunk_signal_samples : int;  (* 1050 samples *)
+          data_width : int;   (*16 bits *)
+          addr_width : int; (*log2(1050) = 11 bits*)
+          mean_fixed : int; (*94.0 in fixed point *)
+          stad_dev_fixed : int; (* 24.0 in finxed point *)
+          fractional_bits : int;   (* Fixed point precision *)
+      }
 
+      let default =  {
+          chunk_signal_sample = 1050;
+          data_width = 16;
+          addr_width = 11;
+          mean_fixed = 94 lsl 8; (*Q8.8 formal : 94.0 * 256 *)
+          std_dev_fixed = 24 lsl 8; (* Q8.8 format: 24.0 * 256 *)
+          fractional_bits = 8;
+      }
+    end
+
+    
+  
 
 ```
