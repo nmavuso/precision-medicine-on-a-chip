@@ -29,7 +29,51 @@ What we are effectively doing is ping-ponging weights with a DDR3 (hot swapping 
       }
     end
 
-   (** Input 
+   (** Input interface *)
+    module I = struct
+      type 'a t = {
+            clock : 'a;
+            clear : 'a;
+          (* Control signals *)
+          start : 'a ;
+          start_read_idx : 'a; [@bits 10]
+          num_reads : 'a; [@bits 10]
+
+          (* Back pressure from downstream *)
+          sample_ready : 'a;
+
+          (* BRAM interface for reading POD5 data *)
+          baram_dout : 'a; [@bits 16]
+      } [@@deriving sexp_of, hardcaml]
+    end
+
+  (** Output interface *)
+ module O = struct
+    typer 'a t = {
+        (* Read metadata *)
+        read_id : 'a; [@bits 32]
+
+        (* Normalized sample output *)
+        sample_data : 'a; [@bits 16] (*Q8.8 fixed point normalized *)
+
+        (* Control flags *)
+        is_last_chunk : 'a;
+        end_of_chunk : 'a;
+        sample_valid : 'a;
+
+        (*BRAM read address *)
+        bram_addr : 'a; [@bits 11]
+        bram_en : 'a;
+
+        (* Status *)
+        processing_done : 'a;
+        reads_processed : 'a; [@bits 10]
+        samples_processed : 'a; [@bits 32]
+     }  [@@deriving sexp_of, hardcaml]
+    end
+
+    
+  
 
     
   
